@@ -1,0 +1,198 @@
+:root {
+  --bg: #f7f7fb;
+  --text: #101116;
+  --muted: #5f6676;
+  --surface: #ffffff;
+  --accent: #0ea5e9;
+  --accent-2: #7c3aed;
+  --radius: 14px;
+  --shadow: 0 10px 24px rgba(0,0,0,.08);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.wrapper {
+  max-width: 1100px;
+  margin: 28px auto 60px;
+  padding: 0 16px;
+}
+
+.title {
+  font-size: clamp(1.4rem, 4.5vw, 2rem);
+  margin: 0 0 14px;
+}
+
+.image-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin: 12px 0 18px;
+  scroll-snap-type: x mandatory;
+}
+
+.card {
+  flex: 0 0 84%;
+  background: var(--surface);
+  border: 1px solid #eceff4;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: auto;        /* preserves native aspect ratios (e.g., 960x540, 1800x1300) */
+  display: block;
+  object-fit: contain; /* prevents cropping while scaling down */
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.copy p { margin: 0; }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-2); }
+
+.green-text { color: #16a34a; }
+.red-text   { color: #ef4444; }
+.em-text    { font-style: italic; }
+
+
+@media (min-width: 700px) {
+  :root {
+    --bg: #faf8ff;
+    --text: #171321;
+    --surface: #ffffff;
+    --accent: #8b5cf6;
+    --accent-2: #06b6d4;
+    --radius: 16px;
+    --shadow: 0 14px 28px rgba(23, 19, 33, .08);
+  }
+
+  body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+
+  .title {
+    font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+    letter-spacing: -0.01em;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 18px;
+  }
+
+  .image-row {
+    overflow: visible;
+    gap: 16px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid #ede9fe;
+    border-radius: var(--radius);
+  }
+
+  .card { flex: 1 1 50%; }
+
+  .copy {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px 20px;
+    margin-top: 10px;
+  }
+
+  .copy p {
+    flex: 1 1 calc(50% - 10px);
+    background: #ffffff;
+    border: 1px solid #ede9fe;
+    border-radius: 12px;
+    padding: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --bg: #0e1116;
+    --text: #e6e8ef;
+    --surface: #151923;
+    --accent: #60a5fa;
+    --accent-2: #34d399;
+    --radius: 18px;
+    --shadow: 0 20px 40px rgba(0,0,0,.35);
+  }
+
+  html, body {
+    background: radial-gradient(1200px 600px at 15% -10%, rgba(96,165,250,.12), transparent 60%), var(--bg);
+  }
+
+  .wrapper {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  .title {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1100px, 92vw);
+    margin: 0;
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 2.4vw + 1rem, 3rem);
+    line-height: 1.15;
+    color: var(--text);
+    z-index: 1;
+  }
+
+  .copy {
+    flex: 0 1 48%;
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text), transparent 85%);
+    border-radius: var(--radius);
+    padding: 18px;
+    gap: 14px;
+    margin: 120px 0 0 0;
+  }
+
+  .copy p {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: var(--text);
+  }
+
+  .image-row {
+    flex: 1 1 52%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow: visible;
+    padding: 120px 0 0 0;
+    background: transparent;
+    border: none;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid color-mix(in oklab, var(--text), transparent 85%);
+  }
+}
