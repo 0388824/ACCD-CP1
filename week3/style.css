@@ -1,7 +1,22 @@
-body {
-  margin: 0;
+body { font-family: Arial, sans-serif; background:#F5FCFF; }
+.container { display:flex; flex-direction:column; align-items:center; margin-top:32px; }
+.row { display:flex; }
+
+.cell {
+  width:30px; height:30px; border:1px solid #000;
+  text-align:center; line-height:30px; box-sizing:border-box; font-size:16px;
 }
 
-#colorStage {
-  height: 400px;
-}
+
+.row:nth-child(3n) .cell { border-bottom:2px solid #000; }
+.cell:nth-child(3n) { border-right:2px solid #000; }
+
+.lightBackground { background:#A9A9A9; }
+.darkBackground   { background:#EBF3E8; }
+.fixed            { background:#e6eef7; font-weight:bold; }
+
+.buttonContainer { margin-top:16px; display:flex; gap:10px; justify-content:center; }
+
+.result { margin-top:14px; font-weight:bold; }
+.correct { color:green; }
+.incorrect { color:#b00020; }
