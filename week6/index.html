@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <title>Autonomous Vehicle Interface Documentation</title>
+</head>
+
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+
+    <header>
+        <h1>Autonomous Vehicle Interface Documentation</h1>
+    </header>
+
+    <!-- Section 1: Concept Overview -->
+    <section id="project-brief" class="section">
+        <h2>Concept Overview</h2>
+        <p>This project explores how the user interface of a car transforms once the vehicle becomes fully autonomous. 
+        The interaction shifts from manual driving to system engagement — the vehicle evolves into a smart electronic device rather than a mechanical one. 
+        Inspired by BMW’s interior design philosophy, the concept emphasizes <strong>digital minimalism</strong> and <strong>material contrast</strong>, merging advanced technology with tactile craftsmanship.</p>
+
+        <div class="image-container">
+            <img src="ref.jpeg" alt="Reference Interior">
+            <p class="caption">Reference — BMW’s contemporary interior design language, balancing digital and physical interfaces.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="sketch.jpg" alt="Initial Sketch">
+            <p class="caption">Initial hand-drawn sketch visualizing the autonomous console as an interactive digital surface.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Modeling Process -->
+    <section id="modeling-process" class="section">
+        <h2>Modeling Process and Design Choices</h2>
+        <p>The design was built in Blender, starting with the dashboard as the central form. 
+        The <strong>Subdivision Surface</strong> and <strong>Mirror Modifiers</strong> were applied to achieve smooth, symmetrical geometry. 
+        The trim uses a <strong>wood material</strong> with <strong>aluminum wrapping</strong> along the edges to create a tactile, precise finish. 
+        A separate <strong>climate control screen</strong> was introduced for dual-zone operation between the driver and co-driver. 
+        The <strong>curved main display</strong> was modeled by cutting through a cylindrical mesh to generate a continuous, immersive viewing surface. 
+        Lastly, the <strong>cup holder</strong> was carved using a Boolean subtraction with a cylinder, ensuring both functionality and design coherence.</p>
+
+        <div class="image-container">
+            <img src="dash.png" alt="Dashboard Modeling">
+            <p class="caption">Dashboard base modeled with Subdivision and Mirror Modifiers for smooth geometry and symmetry.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="screen.png" alt="Curved Main Display">
+            <p class="caption">Curved main display created through a cylindrical cut, producing a soft and continuous screen surface.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="cup.png" alt="Cup Holder Boolean Cut">
+            <p class="caption">Cup holder generated through a Boolean operation with a cylinder for seamless integration.</p>
+        </div>
+
+        <div class="image-container">
+            <img src="climate.png" alt="Climate Control Interface">
+            <p class="caption">Dedicated climate control screen designed for driver and co-driver to adjust independently.</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Final Renders -->
+    <section id="renders" class="section">
+        <h2>Final Renders</h2>
+        <p>The final renders highlight the complete dashboard composition, material contrast, and display integration. 
+        The interface achieves a balance between <strong>comfort</strong> and <strong>technological precision</strong>, envisioning an interior where digital surfaces feel natural and inviting.</p>
+
+        <div class="image-container">
+            <img src="render1.png" alt="Render 1">
+            <p class="caption">Render 1 — Rear passenger perspective showing the full dashboard layout</p>
+        </div>
+
+        <div class="image-container">
+            <img src="render2.png" alt="Render 2">
+            <p class="caption">Render 2 — Passenger-side view</p>
+        </div>
+
+        <div class="image-container">
+            <img src="render3.png" alt="Render 3">
+            <p class="caption">Render 3 — Exterior top-down view</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Reflection -->
+    <section id="reflection" class="section">
+        <h2>Reflection and Next Steps</h2>
+        <p>This project represents an early stage exploration of future in-car interaction design. 
+        The next step focuses on redefining the <strong>co-driver’s role</strong> — developing shared interaction zones, adaptive ambient lighting, and contextual passenger information systems that extend the same design logic beyond the driver’s seat.</p>
+    </section>
+
+    <script src="background.js"></script>
+    
+</body>
+</html>
