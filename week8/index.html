@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎧 EDM Drop Detection Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>🎧 Design Process — EDM Drop Detection Visualizer</h1>
+    <p>Week 8 | Real-Time Audio Interaction using p5.js</p>
+  </header>
+
+  <!-- Step 1 -->
+  <section class="section">
+    <h2>1. Testing Audio Input</h2>
+    <p><strong>Goal:</strong> Confirm that microphone input can be successfully retrieved and visualized.</p>
+    <p>
+      At the beginning, a simple <code>p5.AudioIn()</code> test was created to visualize real-time amplitude values as a bar.
+      This verified that the system could capture audio in real time.
+      From observation, the volume values mostly ranged between <code>0</code> and <code>0.02</code>,
+      helping to define the base range for future mapping.
+    </p>
+
+    <div class="image-container">
+      <img src="sc1.png" alt="Screenshot 1: Audio Input Test" />
+      <p class="caption">📸 Screenshot 1 — A single green bar reacting to sound volume, confirming audio input was functional.</p>
+    </div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="section">
+    <h2>2. Frequency Analysis (Defining Value Range)</h2>
+    <p><strong>Goal:</strong> Identify which frequency band best represents the drop energy.</p>
+    <p>
+      Using <code>p5.FFT()</code>, the frequency spectrum was visualized in color.
+      Through experimentation, the bass band (40–180 Hz) was identified as the most responsive to EDM drops.
+      This confirmed that <strong>low-frequency average</strong> was the best metric for detecting drops,
+      while amplitude alone was too unstable.
+    </p>
+
+    <div class="image-container">
+      <img src="sc2.png" alt="Screenshot 2: FFT Visualization" />
+      <p class="caption">📸 Screenshot 2 — Colorful FFT bars highlight strong bass response during beats, validating bass as key.</p>
+    </div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="section">
+    <h2>3. Implementing Drop Detection</h2>
+    <p><strong>Goal:</strong> Create an algorithm that detects the start and end of drops based on bass energy changes.</p>
+    <p>
+      The system calculates:
+      <br>• Recent low-frequency average (short-term energy)
+      <br>• Baseline average (long-term energy)
+      <br>Then compares them using a ratio:
+    </p>
+
+    <pre><code class="language-js">
+ratio = recent / baseline;
+if (ratio > 1.6) dropState = "⚡ DROP START";
+    </code></pre>
+
+    <p>
+      This detects sudden bass surges typical of a drop. However, early versions couldn’t end the drop correctly due to
+      rapid post-peak fluctuations.
+    </p>
+
+    <video controls>
+      <source src="rc.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <p class="caption">🎬 Step 3 — First working prototype with real-time drop detection visualization.</p>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="section">
+    <h2>4. Problem 1 — Determining Value Range</h2>
+    <p>
+      At first, the system used fixed amplitude thresholds, but they didn’t fit every environment.
+      Through iterative testing (talking, clapping, and playing EDM tracks), the low-frequency energy
+      was found to fluctuate roughly between <code>30–80</code> in normal conditions and <code>100+</code> during drops.
+    </p>
+
+    <pre><code class="language-js">
+let low = getEnergy(spectrum, 40, 180);
+if (ratio > 1.6) dropState = "⚡ DROP START";
+    </code></pre>
+
+    <p>
+      → This calibration ensured reliable detection without false positives from treble or ambient noise.
+    </p>
+  </section>
+
+  <!-- Step 5 -->
+  <section class="section">
+    <h2>5. Problem 2 — Drop Not Ending Properly</h2>
+    <p>
+      Initially, the drop would stay in the "IN DROP" state for too long because single-frame dips were not stable enough to trigger an end.
+      The logic was redesigned to require multiple consecutive low readings before confirming a drop’s end:
+    </p>
+
+    <pre><code class="language-js">
+if (recent < 45 && baseline < 45) {
+  lowBelowCount++;
+  if (lowBelowCount > 8) dropState = "🕊 DROP END";
+} else lowBelowCount = 0;
+    </code></pre>
+
+    <p>
+      → This ensured smoother transitions and accurate timing that matched actual EDM track structures.
+    </p>
+  </section>
+
+  <!-- Step 6 -->
+  <section class="section">
+    <h2>6. Final Result Showcase</h2>
+    <p>
+      The final version combines calibrated thresholds, refined end detection, and a responsive p5.js visual system.
+      The visuals now expand, pulse, and stabilize naturally according to real-time bass intensity.
+    </p>
+
+    <video controls>
+      <source src="f.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <p class="caption">🎬 Final Showcase — Stable drop detection and synchronized generative visuals.</p>
+
+    <p>
+      👉 Try it live:  
+      <a href="https://editor.p5js.org/lzhao3/sketches/6uN4_dOgL" target="_blank">View Sketch on p5.js Editor</a>
+    </p>
+  </section>
+
+
+</body>
+</html>
