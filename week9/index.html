@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🕰 Design Process — Cuckoo Clock Animation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header>
+    <h1>🕰 Design Process — Cuckoo Clock Animation</h1>
+    <p>Week 8 | Motion, Timing, Noise & p5.js Animation</p>
+  </header>
+
+  <!-- Step 1 -->
+  <section class="section">
+    <h2>1. Building the Clock Body</h2>
+    <p><strong>Goal:</strong> Create a static base to anchor all future animation elements.</p>
+    <p>
+      The process began with a simple rectangular clock body constructed using 
+      <code>rect()</code>. This provided a visual anchor for the animation.
+    </p>
+
+    <div class="image-container">
+      <img src="step1_clockBody.gif" alt="Step 1" />
+      <p class="caption">📸 Step 1 — Basic wooden clock body created using <code>rect()</code>.</p>
+    </div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="section">
+    <h2>2. Adding a Pendulum with Sinusoidal Motion</h2>
+    <p><strong>Goal:</strong> Introduce repeated rhythmic motion.</p>
+    <p>
+      A pendulum was implemented using a simple trigonometric formula:
+      <code>sin(frameCount * 0.03)</code>. This created a smooth swinging motion.
+      The pendulum bob and string were rendered with <code>line()</code> and 
+      <code>ellipse()</code>, anchored to the clock body.
+
+    <div class="image-container">
+      <img src="step2_pendulum.gif" alt="Step 2" />
+      <p class="caption">📸 Step 2 — Pendulum swinging using <code>sin()</code> for rhythmic motion.</p>
+    </div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="section">
+    <h2>3. Implementing the Rotating Door Mechanism</h2>
+    <p><strong>Goal:</strong> Create a timed opening animation for the cuckoo door.</p>
+    <p>
+      The door animation was constructed using <code>push()</code>, 
+      <code>pop()</code>, <code>translate()</code>, and <code>rotate()</code>.  
+      A small square door rotates outward around its top-left corner like
+      a mechanical hatch. The rotation angle is controlled by a variable 
+      <code>doorAngle</code> that increases over time.
+    </p>
+
+    <div class="image-container">
+      <img src="step3_doorAnimation.gif" alt="Step 3" />
+      <p class="caption">📸 Step 3 — Clock door opening using <code>rotate()</code>.</p>
+    </div>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="section">
+    <h2>4. Adding a Simple Bird With Linear Motion</h2>
+    <p><strong>Goal:</strong> Animate the bird moving in and out on a timed interval.</p>
+    <p>
+      The bird’s first motion prototype used a basic vertical movement 
+      controlled by <code>birdOffset</code>. Every 600 frames / 10 seconds 
+      (<code>frameCount</code>), the bird slides out of the door and then 
+      retracts. 
+    </p>
+
+    <div class="image-container">
+      <img src="step4_birdLinear.gif" alt="Step 4" />
+      <p class="caption">📸 Step 4 — Bird moving in and out using a linear offset variable.</p>
+    </div>
+  </section>
+
+  <!-- Step 5 -->
+  <section class="section">
+    <h2>5. Adding Perlin Noise for Organic Motion</h2>
+    <p><strong>Goal:</strong> Make the bird’s movement feel more natural.</p>
+    <p>
+      Perlin noise was introduced using <code>noise(frameCount * 0.1)</code>.
+      Noise-generated values were mapped into small x/y offsets to create gentle
+      jitter. This made the bird’s entrance and exit feel less mechanical and more organic.
+    </p>
+
+    <div class="image-container">
+      <img src="step5_noiseBird.gif" alt="Step 5" />
+      <p class="caption">📸 Step 5 — Bird movement enhanced using Perlin noise.</p>
+    </div>
+  </section>
+
+  <!-- Step 6 -->
+  <section class="section">
+    <h2>6. Final Bird Replacement</h2>
+    <p><strong>Goal:</strong> Make the bird image more recognizable. </p>
+    <p>
+      The simple shapes were replaced with a more detailed bird model, including a
+      head, body, beak, eyes, and legs made from <code>ellipse()</code>, 
+      <code>triangle()</code>, and <code>line()</code>.  
+      The bird design is referenced and credited to:  
+      <a href="https://editor.p5js.org/zlati011/sketches/_7tgZf7ij" target="_blank">
+        https://editor.p5js.org/zlati011/sketches/_7tgZf7ij
+      </a>.
+    </p>
+
+    <div class="image-container">
+      <img src="step6_finalBird.gif" alt="Step 6" />
+      <p class="caption">📸 Step 6 — Final bird integrated into the animation.</p>
+    </div>
+  </section>
+
+  <!-- Step 7 -->
+  <section class="section">
+    <h2>7. Final Showcase</h2>
+
+    <div class="image-container">
+      <img src="step7_final.gif" alt="Final Showcase" />
+      <p class="caption">🎬 Final Showcase </p>
+    </div>
+
+    <p>👉 Live code:</p>
+    <iframe 
+      src="https://editor.p5js.org/lzhao3/full/LIh348Mbj"
+      width="600"
+      height="500"
+      style="border:none;">
+    </iframe>
+  </section>
+
+</body>
+</html>
